@@ -319,18 +319,12 @@
 		ctx.fillText("得分: " + score, 32, 32);
 		// Time
 		if(mode === 'normal'){
-			ctx.fillStyle = "rgb(250, 250, 250)";
-			ctx.font = "24px Microsoft YaHei";
 			ctx.textAlign = "right";
-			ctx.textBaseline = "top";
 			ctx.fillText("剩余时间: " + time + '秒', canvas.width - 32, 32);
 		}
 		//lives
 		if(mode === 'endless'){
-			ctx.fillStyle = "rgb(250, 250, 250)";
-			ctx.font = "24px Microsoft YaHei";
 			ctx.textAlign = "right";
-			ctx.textBaseline = "top";
 			ctx.fillText("剩余生命: " + lives, canvas.width - 32, 32);
 		}
 	};
