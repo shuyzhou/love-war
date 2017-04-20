@@ -55,28 +55,23 @@
     //run after start button was clicked
     function start(mode) {
         var w = window,
-        requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame,
-        // Create the canvas
-        canvas = document.querySelector("#canvas"),
-        ctx = canvas.getContext("2d"),
-        heartWidth = 38,
-        heartHeight = 32,
-        stoolWidth = 32,
-        stoolHeight = 36,
-        //score and time for normal mode and lives for endless mode
-        score = 0,
-        time = 20,
-        lives = 3,
-        //store setInterval Id
-        tick1,
-        tick2;
-        // background image
-        var bgReady = false;
-        var bgImage = new Image();
-        bgImage.onload = function() {
-            bgReady = true;
-        };
-        bgImage.src = "images/background.png";
+            requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame || function(fn) {
+                    setTimeout(fn, 17);
+                },
+            // Create the canvas
+            canvas = document.querySelector("#canvas"),
+            ctx = canvas.getContext("2d"),
+            heartWidth = 38,
+            heartHeight = 32,
+            stoolWidth = 32,
+            stoolHeight = 36,
+            //score and time for normal mode and lives for endless mode
+            score = 0,
+            time = 20,
+            lives = 3,
+            //store setInterval Id
+            tick1,
+            tick2;
         // lover image
         var loverReady = false;
         var loverImage = new Image();
@@ -307,9 +302,7 @@
             }
         };
         var render = function() {
-            if (bgReady) {
-                ctx.drawImage(bgImage, 0, 0);
-            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             if (loverReady) {
                 ctx.drawImage(loverImage, lover.x, lover.y, lover.width, lover.height);
             }
